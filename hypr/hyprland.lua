@@ -224,7 +224,7 @@ hl.gesture({
 ---------------------
 
 local mainMod = "SUPER" 
-local browser = "zen-browser"
+local browser = "librewolf"
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
