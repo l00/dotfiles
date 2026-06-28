@@ -1,66 +1,36 @@
--- This is an example Hyprland Lua config file.
--- Refer to the wiki for more information.
--- https://wiki.hypr.land/Configuring/Start/
-
--- Please note not all available settings / options are set here.
--- For a full list, see the wiki
-
--- You can (and should!!) split this configuration into multiple files
--- Create your files separately and then require them like this:
--- require("myColors")
-
-
-------------------
 ---- MONITORS ----
-------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "auto",
+  output = "DP-1",
+  mode = "2560x1440@170",
+  position = "auto-right",
+  scale = 1,
 })
 
+hl.monitor({
+	output = "HDMI-A-1",
+	mode = "1920x1080@60",
+	position = "1080x0",
+	scale = 1,
+	transform = 1,
+})
 
----------------------
----- MY PROGRAMS ----
----------------------
-
--- Set programs that you use
+---- PROGRAMS ----
 local terminal    = "kitty"
 local fileManager = "thunar"
-local menu        = "rofi -show drun"
+local menu = "rofi -show drun"
+local browser = "librewolf"
+local secondBrowser = "helium-browser"
 
-
--------------------
 ---- AUTOSTART ----
--------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Autostart/
-
--- Autostart necessary processes (like notifications daemons, status bars, etc.)
--- Or execute your favorite apps at launch like this:
---
 hl.on("hyprland.start", function () 
    hl.exec_cmd("hyprpaper & waybar & nm-applet")
 end)
 
-
--------------------------------
 ---- ENVIRONMENT VARIABLES ----
--------------------------------
-
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
-
 hl.env("XCURSOR_SIZE", "18")
 hl.env("XCURSOR_THEME", "cursors/volantes_cursors")
 
------------------------
 ---- LOOK AND FEEL ----
------------------------
-
--- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
         gaps_in  = 1,
@@ -177,10 +147,7 @@ hl.config({
     },
 })
 
-----------------
 ----  MISC  ----
-----------------
-
 hl.config({
     misc = {
         force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
@@ -188,11 +155,7 @@ hl.config({
     },
 })
 
-
----------------
 ---- INPUT ----
----------------
-
 hl.config({
     input = {
         kb_layout  = "us",
@@ -217,12 +180,7 @@ hl.gesture({
     action = "workspace"
 })
 
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-
 ---- KEYBINDINGS ----
----------------------
-
 local mainMod = "SUPER" 
 local browser = "librewolf"
 local secondBrowser = "helium-browser"
@@ -276,16 +234,7 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
-
---------------------------------
 ---- WINDOWS AND WORKSPACES ----
---------------------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
-
--- Example window rules that are useful
-
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
@@ -325,19 +274,4 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
-})
-
-hl.monitor({
-  output = "DP-1",
-  mode = "2560x1440@170",
-  position = "auto-right",
-  scale = 1,
-})
-
-hl.monitor({
-	output = "HDMI-A-1",
-	mode = "1920x1080@60",
-	position = "1080x0",
-	scale = 1,
-	transform = 1,
 })
