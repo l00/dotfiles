@@ -197,7 +197,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({mode = "fullscreen", action
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(secondBrowser))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd([[grim -g $(slurp) ~/Screenshots/$(date +%s).png]]))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy -t image/png]])) 
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
